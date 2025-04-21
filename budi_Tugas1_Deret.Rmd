@@ -1,0 +1,56 @@
+---
+title: "tugas 1 Deret waktu"
+author: "Budiii"
+date: "2025-04-21"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+'''{r}
+dataset
+help(lh)
+
+# 2. Plot data deret waktu lh
+plot(lh, main = "Plot Data Hormon LH", ylab = "Kadar LH", xlab = "Waktu")
+
+# 3. Decompose data (jika diperlukan, namun data ini tidak musiman sehingga tidak cocok untuk STL)
+# Jika tetap ingin mencoba, gunakan berikut:
+# convert ke ts dengan frekuensi tertentu (misalnya asumsi 28 hari per siklus)
+lh_ts <- ts(lh, frequency = 28)
+stl_lh <- stl(lh_ts, s.window = "periodic")
+plot(stl_lh)
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+# Muat dataset lh (sudah tersedia secara default di R)
+data(lh)
+
+# Tampilkan grafik deret waktu dataset lh
+plot(lh,
+     main = "Grafik Deret Waktu Kadar Hormon LH",
+     xlab = "Waktu (hari)",
+     ylab = "Kadar LH (ng/ml)",
+     col = "blue",
+     lwd = 2)
+
+# Tambahkan garis grid agar lebih mudah dibaca
+grid()
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
